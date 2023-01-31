@@ -32,11 +32,6 @@
         <button class="main-button" data-action="start" id="js-btn">Start</button>
       </div>
     </main>
-    <div class="hidden">
-      <audio src="backtowork.mp3" data-sound="pomodoro"></audio>
-      <audio src="break.mp3" data-sound="shortBreak"></audio>
-      <audio src="break.mp3" data-sound="longBreak"></audio>
-    </div>
     <script>
       const timer = {pomodoro: 1,shortBreak: 2,longBreak: 3,longBreakInterval: 4,sessions: 0,};
       let interval;

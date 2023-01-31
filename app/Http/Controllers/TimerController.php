@@ -45,19 +45,19 @@ class TimerController extends Controller
         //workTime, shortBreak, longBreak
         if($request->mode == 'shortBreak'){
             $timer->update([
-                'currentMode' => $request->mode,
+                'mode' => $request->mode,
                 'endTime' => Carbon::now('Asia/Manila')->addMinutes($timer->breakTime),
             ]); 
         }
         else if($request->mode == 'longBreak'){
             $timer->update([
-                'currentMode' => $request->mode,
+                'mode' => $request->mode,
                 'endTime' => Carbon::now('Asia/Manila')->addMinutes($timer->longBreakTime),
             ]); 
         }
         else if($request->mode == 'workTime'){
             $timer->update([
-                'currentMode' => $request->mode,
+                'mode' => $request->mode,
                 'endTime' => Carbon::now('Asia/Manila')->addMinutes($timer->workTime),
             ]); 
         }
