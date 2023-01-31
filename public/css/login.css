@@ -1,0 +1,38 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(57, 65, 94);
+    background-size: cover;
+    background-image: url("{{asset('images/background.png')}}");
+}
+
+.container {
+    /* background-color: rgba(240, 240, 240); */
+    border-radius: 20px;
+    width: 1500px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.form-control {
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 300px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgba(57, 65, 94, 0.1);
+}
+
+.text-center {
+    font-weight: bold;
+}
+
+.btn {
+    margin-inline: 120px;
+    margin-block: 15px;
+    background-color: rgb(57, 65, 94);
+    height: 50px;
+}
