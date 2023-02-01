@@ -97,50 +97,48 @@
         console.log("startTimerCalled");
         axios.get('/join/' + rName + '/getSyncTimer').then(function(response) {
           console.log("Over Here: "+ response.data);
+          let { total } = timer.remainingTime;
+          const endTime = Date.parse(response.data) + total * 1000;
+          console.log("Date: "+ endTime);
+          if (timer.mode === 'pomodoro') timer.sessions++;
+        
+          mainButton.dataset.action = 'stop';
+          mainButton.textContent = 'stop';
+          mainButton.classList.add('active');
+        
+          interval = setInterval(function() {
+            timer.remainingTime = getRemainingTime(endTime);
+            updateClock();
+        
+            total = timer.remainingTime.total;
+            if (total <= 0) {
+              clearInterval(interval);
+        
+              switch (timer.mode) {
+                case 'pomodoro':
+                  if (timer.sessions % timer.longBreakInterval === 0) {
+                    switchMode('longBreak');
+                  } else {
+                    switchMode('shortBreak');
+                  }
+                  break;
+                default:
+                  switchMode('pomodoro');
+              }
+        
+              if (Notification.permission === 'granted') {
+                const text = timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+                new Notification(text);
+              }
+        
+              startTimer();
+            }
+          }, 1000);
         })
         .catch(function(error) {
           console.error(error);
         });
 
-        let { total } = timer.remainingTime;
-        let test1 = new Date();
-        const endTime = Date.parse(new Date()) + total * 1000;
-        console.log("Date: "+ test1 +" ---> "+ endTime);
-        if (timer.mode === 'pomodoro') timer.sessions++;
-      
-        mainButton.dataset.action = 'stop';
-        mainButton.textContent = 'stop';
-        mainButton.classList.add('active');
-      
-        interval = setInterval(function() {
-          timer.remainingTime = getRemainingTime(endTime);
-          updateClock();
-      
-          total = timer.remainingTime.total;
-          if (total <= 0) {
-            clearInterval(interval);
-      
-            switch (timer.mode) {
-              case 'pomodoro':
-                if (timer.sessions % timer.longBreakInterval === 0) {
-                  switchMode('longBreak');
-                } else {
-                  switchMode('shortBreak');
-                }
-                break;
-              default:
-                switchMode('pomodoro');
-            }
-      
-            if (Notification.permission === 'granted') {
-              const text = timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
-              new Notification(text);
-            }
-      
-            document.querySelector(`[data-sound="${timer.mode}"]`).play();
-            startTimer();
-          }
-        }, 1000);
       }
       
       function stopTimer() {

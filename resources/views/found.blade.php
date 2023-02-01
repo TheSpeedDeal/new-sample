@@ -7,6 +7,7 @@
     <title>Document</title>
     <style>
         table{
+            padding-top: 10%;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -32,7 +33,7 @@
             <td>{{ $studentData['studyear'] }}</td>
         </tr>
         <tr>
-            <th><a href="{{ route('students.all')}}" title="Back">Back</a> </th>
+           <td><h1><a href="{{ route('students.all')}}" title="Back">Back</a></h1> </td>
         </tr>
     </table>
     

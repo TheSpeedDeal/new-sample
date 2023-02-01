@@ -12,11 +12,11 @@ use Exception;
 
 class TimerController extends Controller
 {
-    ///join/{id}/statusTimer
+    //join/{id}/statusTimer
     public function statusTimer(Request $request){
         $timer = CustomTimer::select()->where('roomName', $request->roomName)->first();
         $timer->status = $request->action;
-        if($timer->endTime == null){
+        if($timer->endTime === null){
             $timer->endTime = Carbon::now('Asia/Manila')->addMinutes($request->time);
         }
         //$timer->endTime = null;
