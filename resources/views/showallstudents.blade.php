@@ -41,15 +41,19 @@
     </style>
 </head>
 <body>
+    <h1>Homepage</h1>
+    <div class="container">
+        <a href="{{ route('printstudents') }}" title="Edit Student Entry">Print</a>
+        <a href="{{ route('students.create') }}" title="Edit Student Entry">Create Student</a>
+        <a href="{{ route('signout')}}" title="Sign out">Sign out</a>
+    </div>
+    <br>
     <table>
         <tr>    
             <th>Student ID</th>
             <th>Student Name</th>
             <th>Student Program</th>
             <th>Student Year</th>
-            <th><a href="{{ route('printstudents') }}" title="Edit Student Entry">Print</a> </th>
-            <th><a href="{{ route('students.create') }}" title="Edit Student Entry">Create Student</a> </th>
-            <th><a href="{{ route('signout')}}" title="Sign out">Sign out</a> </th>
         </tr> 
         @foreach($studentCollection as $student)
             <tr>

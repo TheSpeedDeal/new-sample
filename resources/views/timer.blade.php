@@ -96,7 +96,7 @@
       function startTimer() {
         console.log("startTimerCalled");
         axios.get('/join/' + rName + '/getSyncTimer').then(function(response) {
-          console.log(response.data);
+          console.log("Over Here: "+ response.data);
         })
         .catch(function(error) {
           console.error(error);
