@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TimerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WebcamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,3 +50,6 @@ Route::view('/newtimer','newtimer')->name('newtimer');
 Route::post('/join/{id}/statusTimer', [TimerController::class, 'statusTimer'])->name('timer.status');
 Route::post('/join/{id}/updateTimer', [TimerController::class, 'syncTimer'])->name('timer.sync');
 Route::get('/join/{id}/getSyncTimer', [TimerController::class, 'getSyncTimer'])->name('timer.getSync');
+
+Route::get('webcam', [WebcamController::class, 'index']);
+Route::post('webcam', [WebcamController::class, 'store'])->name('webcam.capture');
