@@ -53,3 +53,5 @@ Route::get('/join/{id}/getSyncTimer', [TimerController::class, 'getSyncTimer'])-
 
 Route::get('webcam', [WebcamController::class, 'index']);
 Route::post('webcam', [WebcamController::class, 'store'])->name('webcam.capture');
+
+Route::view('/testing', 'test')->name('testing');
